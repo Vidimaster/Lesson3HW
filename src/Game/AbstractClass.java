@@ -51,7 +51,7 @@ public abstract class AbstractClass implements Game {
     public Answer inputValue(String value) {
         int bull = 0;
         int cow = 0;
-
+        if (sizeWord < value.length()){value = value.substring(0, sizeWord);}
         for (int i = 0; i < value.length(); i++) {
             if (value.charAt(i) == computerWord.charAt(i)) {
                 bull++;
@@ -61,7 +61,7 @@ public abstract class AbstractClass implements Game {
                 cow++;
             }
         }
-        logClass.LogAdd("Player Entered Word: " + value);
+        logClass.LogAdd("Player Entered Word: " + value + " bulls: " + bull + " cows: " + cow);
         maxTry--;
         if (maxTry == 0 && gameStatus != GameStatus.WIN) {
             gameStatus = GameStatus.LOSE;
